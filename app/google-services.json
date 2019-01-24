@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "312620021605",
+    "firebase_url": "https://markan-36b3b.firebaseio.com",
+    "project_id": "markan-36b3b",
+    "storage_bucket": "markan-36b3b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:312620021605:android:50089cfa9928e3ab",
+        "android_client_info": {
+          "package_name": "com.example.hamza.markan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "312620021605-jkhgovm4gqqqvvtc53q4ef0hqq7sjk97.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hamza.markan",
+            "certificate_hash": "6a0cb1b26cbc80dfa3fc315e51e05714c73d0291"
+          }
+        },
+        {
+          "client_id": "312620021605-7bmcpdgfhh6k1siafeesv4d0dd63ssdl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABT-wmbxuW60uLp9t_7X6681-mbO_3iuY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "312620021605-7bmcpdgfhh6k1siafeesv4d0dd63ssdl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
