@@ -16,7 +16,8 @@ public class OfferActivity extends AppCompatActivity implements View.OnClickList
 
     TextView textViewStoreName, textViewTagline, textViewDetails;
     ImageView imageViewLogo, imageViewImage;
-    Button buttonComments;
+    Store store;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +31,7 @@ public class OfferActivity extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.buttonComments).setOnClickListener(this);
 
         Intent intent = getIntent();
-        Store store = intent.getParcelableExtra("storeSend");
+        store = intent.getParcelableExtra("storeSend");
 
         textViewStoreName.setText(store.getStoreName());
         textViewTagline.setText(store.getTagline());
@@ -38,22 +39,15 @@ public class OfferActivity extends AppCompatActivity implements View.OnClickList
 
         Picasso.get().load(store.getLogo()).fit().into(imageViewLogo);
         Picasso.get().load(store.getImage()).fit().into(imageViewImage);
-
-//        Log.d("id", store.getId());
-//        Log.d("name", store.getStoreName());
-//        Log.d("details", store.getDetails());
-//        Log.d("tagline", store.getTagline());
-//        Log.d("image", store.getImage());
-//        Log.d("logo", store.getLogo());
-//        Log.d("category", store.getCategory());
-//        Log.d("coordinates", store.getCoordinates().toString());
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case (R.id.buttonComments):
-                startActivity(new Intent(this, CommentsActivity.class));
+                Intent i = new Intent(OfferActivity.this, CommentsActivity.class);
+                i.putExtra("storeId", store.getId());
+                startActivity(i);
                 break;
         }
     }
