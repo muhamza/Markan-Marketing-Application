@@ -10,13 +10,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 
-public class MainActivity extends AppCompatActivity{
+public class CategoriesActivity extends AppCompatActivity{
 
     ListView listView;
     String[] categories = {"Clothing", "Food", "Footwear", "Grocery", "Handbags"};
@@ -31,18 +29,16 @@ public class MainActivity extends AppCompatActivity{
         setSupportActionBar(toolbar);
 
         listView = (ListView) findViewById(R.id.listView);
-        CustomListView customListView = new CustomListView(this, categories, imagesID);
-        listView.setAdapter(customListView);
+        CategoriesListView categoriesListView = new CategoriesListView(this, categories, imagesID);
+        listView.setAdapter(categoriesListView);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
             public void onItemClick(AdapterView<?> adapter, View v, int position, long arg3)
             {
-                String value = (String)adapter.getItemAtPosition(position);
-                //Toast.makeText(MainActivity.this, value, Toast.LENGTH_SHORT).show();
-                //startActivity(new Intent(MainActivity.this, StoreActivity.class));
-                Intent i = new Intent(MainActivity.this, StoreActivity.class);
-                i.putExtra("category", value);
+                String category = (String)adapter.getItemAtPosition(position);
+                Intent i = new Intent(CategoriesActivity.this, StoresActivity.class);
+                i.putExtra("category", category);
                 startActivity(i);
             }
         });

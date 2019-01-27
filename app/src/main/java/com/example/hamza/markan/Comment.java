@@ -7,7 +7,7 @@ class Comment {
     private String comment;
     private float rating;
 
-    public Comment(String userId, String storeId, String title, String comment, Float rating){
+    public Comment(String userId, String storeId, String title, String comment, float rating){
         this.userId = userId;
         this.storeId = storeId;
         this.title = title;

@@ -10,14 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class CustomListView extends ArrayAdapter<String>{
+public class CategoriesListView extends ArrayAdapter<String>{
 
     private String[] categories;
     private Integer[] imagesID;
     private Activity context;
 
-    public CustomListView(Activity context, String[] categories, Integer[] imagesID) {
-        super(context, R.layout.listview_layout, categories);
+    public CategoriesListView(Activity context, String[] categories, Integer[] imagesID) {
+        super(context, R.layout.listview_layout_category, categories);
         this.context = context;
         this.categories = categories;
         this.imagesID = imagesID;
@@ -31,7 +31,7 @@ public class CustomListView extends ArrayAdapter<String>{
 
         if (view == null){
             LayoutInflater layoutInflater = context.getLayoutInflater();
-            view = layoutInflater.inflate(R.layout.listview_layout, null, true);
+            view = layoutInflater.inflate(R.layout.listview_layout_category, null, true);
             viewHolder = new ViewHolder(view);
             view.setTag(viewHolder);
         }

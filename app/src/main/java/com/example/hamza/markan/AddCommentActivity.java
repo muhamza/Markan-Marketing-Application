@@ -99,14 +99,14 @@ public class AddCommentActivity extends AppCompatActivity implements View.OnClic
         final String userId = currentFirebaseUser.getUid();
 
         //Add Comment to database
-        Comment newComment = new Comment(userId, storeId, editTextTitle.getText().toString(), editTextComment.getText().toString(), ratingBarComment.getRating());
+        Comment newComment = new Comment(userId, storeId, title, comment, ratingBarComment.getRating());
         mFirestore.collection("Comments").add(newComment).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
                 progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful()){
                     Toast.makeText(AddCommentActivity.this, "Successfully, added the comment.", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(AddCommentActivity.this, CommentsActivity.class));
+                    finish();
                 }
                 else{
                     Toast.makeText(AddCommentActivity.this, "The comment could not be added. Please try again!", Toast.LENGTH_SHORT).show();

@@ -21,9 +21,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".CategoriesActivity" />
         <activity android:name=".PersonalDataActivity" />
-        <activity android:name=".StoreActivity" />
+        <activity android:name=".StoresActivity" />
         <activity android:name=".OfferActivity" />
     </application>
 

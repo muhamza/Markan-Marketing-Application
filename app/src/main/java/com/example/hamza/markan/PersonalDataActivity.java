@@ -108,7 +108,7 @@ public class PersonalDataActivity extends AppCompatActivity implements View.OnCl
                         progressBar.setVisibility(View.GONE);
                         //Toast.makeText(PersonalDataActivity.this, "Profile updated!", Toast.LENGTH_SHORT).show();
                         finish();
-                        Intent intent = new Intent(PersonalDataActivity.this, MainActivity.class);
+                        Intent intent = new Intent(PersonalDataActivity.this, CategoriesActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                     }

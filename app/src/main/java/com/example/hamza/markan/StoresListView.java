@@ -20,12 +20,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StoreListView extends ArrayAdapter<Store> {
+public class StoresListView extends ArrayAdapter<Store> {
 
     private Activity context;
     private ArrayList<Store> storeList;
 
-    public StoreListView(Activity context, ArrayList<Store> storeList){
+    public StoresListView(Activity context, ArrayList<Store> storeList){
         super(context, R.layout.listview_layout_store, storeList);
         this.context = context;
         this.storeList = storeList;
@@ -62,20 +62,4 @@ public class StoreListView extends ArrayAdapter<Store> {
             imageViewStoreLogo = view.findViewById(R.id.imageViewStoreLogo);
         }
     }
-
-//    @NonNull
-//    @Override
-//    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-//        LayoutInflater inflater = context.getLayoutInflater();
-//
-//        View listViewItem = inflater.inflate(R.layout.listview_layout_store, null, true);
-//
-//        TextView textViewStoreName = listViewItem.findViewById(R.id.textViewStoreName);
-//        TextView textViewDescription = listViewItem.findViewById(R.id.textViewDescription);
-//        Store store = storeList.get(position);
-//        textViewStoreName.setText(store.getStoreName());
-//        textViewDescription.setText(store.getDetails());
-//
-//        return listViewItem;
-//    }
 }
