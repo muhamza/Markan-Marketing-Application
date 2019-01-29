@@ -27,6 +27,7 @@ public class StoresActivity extends AppCompatActivity {
     private ListView listViewStores;
     private static final String TAG = "TAG";
     private ProgressBar progressBar;
+    private GeoPoint userLocation;
 
     private ArrayList<Store> storesList;
 
@@ -48,7 +49,13 @@ public class StoresActivity extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
 
         Intent intent = getIntent();
-        String category = intent.getExtras().getString("category");
+        Bundle extras = intent.getExtras();
+        String category = extras.getString("category");
+        double latitude = extras.getDouble("latitude");
+        double longitude = extras.getDouble("longitude");
+        //String category = intent.getExtras().getString("category");
+
+        userLocation = new GeoPoint(latitude, longitude);
 
         mFirestore.collection("Stores")
                 .whereEqualTo("category", category)
