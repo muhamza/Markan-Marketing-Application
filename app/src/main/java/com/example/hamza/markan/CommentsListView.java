@@ -41,9 +41,15 @@ public class CommentsListView extends ArrayAdapter<Comment> {
             viewHolder = (ViewHolder) view.getTag();
         }
         viewHolder.textViewTitle.setText(commentList.get(position).getTitle());
-        viewHolder.textViewComment.setText(commentList.get(position).getComment());
+        viewHolder.textViewComment.setText(reduceText(commentList.get(position).getComment()));
         viewHolder.ratingBar.setRating((float)commentList.get(position).getRating());
         return view;
+    }
+
+    private String reduceText(String text){
+        if (text.length() > 55)
+            text = text.substring(0,55).concat("....");
+        return text;
     }
 
     class ViewHolder{
