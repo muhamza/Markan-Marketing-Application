@@ -1,8 +1,15 @@
 package com.example.hamza.markan;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,8 +36,12 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
+import com.google.firebase.firestore.GeoPoint;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class AddCommentActivity extends AppCompatActivity implements View.OnClickListener{
@@ -40,6 +51,7 @@ public class AddCommentActivity extends AppCompatActivity implements View.OnClic
     private RatingBar ratingBarComment;
     private ProgressBar progressBar;
     private String storeId;
+    private double latitude, longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +72,13 @@ public class AddCommentActivity extends AppCompatActivity implements View.OnClic
 
         findViewById(R.id.buttonAddComment).setOnClickListener(this);
 
+//        Intent intent = getIntent();
+//        storeId = intent.getExtras().getString("storeId");
         Intent intent = getIntent();
-        storeId = intent.getExtras().getString("storeId");
+        Bundle extras = intent.getExtras();
+        storeId = extras.getString("storeId");
+        latitude = extras.getDouble("latitude");
+        longitude = extras.getDouble("longitude");
     }
 
     @Override
@@ -97,9 +114,11 @@ public class AddCommentActivity extends AppCompatActivity implements View.OnClic
         progressBar.setVisibility(View.VISIBLE);
 
         final String userId = currentFirebaseUser.getUid();
+        String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
 
         //Add Comment to database
-        Comment newComment = new Comment(userId, storeId, title, comment, ratingBarComment.getRating());
+        GeoPoint userLocation = new GeoPoint(latitude, longitude);
+        Comment newComment = new Comment(userId, storeId, title, comment, ratingBarComment.getRating(), userLocation, currentDate);
         mFirestore.collection("Comments").add(newComment).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
@@ -113,5 +132,6 @@ public class AddCommentActivity extends AppCompatActivity implements View.OnClic
                 }
             }
         });
+        Log.i("userLocation", userLocation.toString());
     }
 }

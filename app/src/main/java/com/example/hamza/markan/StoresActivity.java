@@ -56,6 +56,7 @@ public class StoresActivity extends AppCompatActivity {
         //String category = intent.getExtras().getString("category");
 
         userLocation = new GeoPoint(latitude, longitude);
+        Log.i("userLocation", userLocation.toString());
 
         mFirestore.collection("Stores")
                 .whereEqualTo("category", category)

@@ -76,7 +76,6 @@ public class CategoriesActivity extends AppCompatActivity{
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60, 10, locationListener);
         }
 
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
