@@ -1,6 +1,7 @@
 package com.example.hamza.markan;
 
 import android.content.Intent;
+import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,7 +28,11 @@ public class StoresActivity extends AppCompatActivity {
     private ListView listViewStores;
     private static final String TAG = "TAG";
     private ProgressBar progressBar;
-    private GeoPoint userLocation;
+    private float radius = 10;
+    private Location userLocation;
+    private Location storeLocation;
+    private GeoPoint storeLocationGeo;
+    private float distance;
 
     private ArrayList<Store> storesList;
 
@@ -55,7 +60,9 @@ public class StoresActivity extends AppCompatActivity {
         double longitude = extras.getDouble("longitude");
         //String category = intent.getExtras().getString("category");
 
-        userLocation = new GeoPoint(latitude, longitude);
+        userLocation = new Location("");
+        userLocation.setLatitude(latitude);
+        userLocation.setLongitude(longitude);
         Log.i("userLocation", userLocation.toString());
 
         mFirestore.collection("Stores")
@@ -66,8 +73,18 @@ public class StoresActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Store store = new Store(document.getId(), document.getData().get("name").toString(), document.getData().get("category").toString(), document.getData().get("details").toString(), (GeoPoint) document.getData().get("coordinates"), document.getData().get("image").toString(), document.getData().get("logo").toString(), document.getData().get("tagline").toString());
-                                storesList.add(store);
+                                storeLocationGeo = (GeoPoint) document.getData().get("coordinates");
+                                storeLocation = new Location("");
+                                storeLocation.setLatitude(storeLocationGeo.getLatitude());
+                                storeLocation.setLongitude(storeLocationGeo.getLongitude());
+//                                Log.i("storeLocation", storeLocation.toString());
+
+                                distance = userLocation.distanceTo(storeLocation)/1000;
+//                                Log.i("distance", String.valueOf(distance));
+                                if (distance < radius){
+                                    Store store = new Store(document.getId(), document.getData().get("name").toString(), document.getData().get("category").toString(), document.getData().get("details").toString(), storeLocationGeo, document.getData().get("image").toString(), document.getData().get("logo").toString(), document.getData().get("tagline").toString());
+                                    storesList.add(store);
+                                }
                             }
                             progressBar.setVisibility(View.GONE);
                             StoresListView storesListView = new StoresListView(StoresActivity.this, storesList);

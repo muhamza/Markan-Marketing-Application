@@ -23,5 +23,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="128dp"
         android:layout_marginTop="31dp"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:textStyle="bold" />
 </RelativeLayout>

@@ -85,10 +85,6 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
         }
 
         mFirestore = FirebaseFirestore.getInstance();
-        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
-                .setTimestampsInSnapshotsEnabled(true)
-                .build();
-        mFirestore.setFirestoreSettings(settings);
 
         listViewComments = findViewById(R.id.listViewComments);
         progressBar = findViewById(R.id.progressBar);
@@ -96,6 +92,8 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
         progressBar.setVisibility(View.VISIBLE);
 
         findViewById(R.id.buttonAddComment).setOnClickListener(this);
+
+        commentsList = new ArrayList<Comment>();
 
         Intent intent = getIntent();
         storeId = intent.getExtras().getString("storeId");
@@ -136,7 +134,7 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void RefreshList(){
-        commentsList = new ArrayList<Comment>();
+        commentsList.clear();
         mFirestore.collection("Comments")
                 .whereEqualTo("storeId", storeId)
                 .get()
@@ -159,7 +157,7 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
                                 public void onItemClick(AdapterView<?> adapter, View v, int position, long arg3)
                                 {
                                     Comment comment = (Comment)adapter.getItemAtPosition(position);
-                                    Toast.makeText(CommentsActivity.this, comment.getTitle(), Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(CommentsActivity.this, comment.getTitle(), Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(CommentsActivity.this, ViewCommentsActivity.class);
                                     i.putExtra("commentSend", commentsList.get(position));
                                     startActivity(i);
