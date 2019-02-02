@@ -6,13 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".PersonalDataActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:background="?attr/colorPrimary"/>
+
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/editTextLastName"
-        android:layout_marginTop="23dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="91dp"
         android:text="First Name"
         tools:layout_editor_absoluteX="84dp"
         tools:layout_editor_absoluteY="48dp" />
@@ -22,7 +32,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView5"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="0dp"
+        android:background="@android:drawable/editbox_background"
         android:ems="10"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="84dp"
@@ -32,9 +45,11 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/radioGender"
-        android:layout_marginTop="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="168dp"
         android:text="Last Name"
         tools:layout_editor_absoluteX="84dp"
         tools:layout_editor_absoluteY="149dp" />
@@ -44,7 +59,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView6"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="0dp"
+        android:background="@android:drawable/editbox_background"
         android:ems="10"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="85dp"
@@ -54,9 +72,11 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/textView5"
-        android:layout_marginTop="181dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="249dp"
         android:layout_weight="1"
         android:text="Gender"
         tools:layout_editor_absoluteX="84dp"
@@ -67,7 +87,9 @@
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView7"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="0dp"
         tools:layout_editor_absoluteX="138dp"
         tools:layout_editor_absoluteY="280dp">
 
@@ -96,9 +118,10 @@
         android:layout_width="211dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="67dp"
-        android:text="Save Information" />
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="59dp"
+        android:text="Save Information"
+        android:layout_centerInParent="true"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
