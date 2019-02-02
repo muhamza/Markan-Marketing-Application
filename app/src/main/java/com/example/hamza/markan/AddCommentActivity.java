@@ -12,6 +12,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -50,7 +51,7 @@ public class AddCommentActivity extends AppCompatActivity implements View.OnClic
     private EditText editTextTitle, editTextComment;
     private RatingBar ratingBarComment;
     private ProgressBar progressBar;
-    private String storeId;
+    private String storeId, storeName;
     private double latitude, longitude;
 
     @Override
@@ -77,8 +78,13 @@ public class AddCommentActivity extends AppCompatActivity implements View.OnClic
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         storeId = extras.getString("storeId");
+        storeName = extras.getString("storeName");
         latitude = extras.getDouble("latitude");
         longitude = extras.getDouble("longitude");
+        setTitle(storeName + " Add Comment");
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
     @Override

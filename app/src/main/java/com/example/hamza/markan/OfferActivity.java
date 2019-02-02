@@ -3,6 +3,7 @@ package com.example.hamza.markan;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,7 @@ public class OfferActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offer);
+
         textViewStoreName = findViewById(R.id.textViewStoreName);
         textViewTagline = findViewById(R.id.textViewTagline);
         textViewDetails = findViewById(R.id.textViewDetails);
@@ -45,9 +47,12 @@ public class OfferActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()){
             case (R.id.buttonComments):
-                Intent i = new Intent(OfferActivity.this, CommentsActivity.class);
-                i.putExtra("storeId", store.getId());
-                startActivity(i);
+                Intent intent = new Intent(OfferActivity.this, CommentsActivity.class);
+                Bundle extras = new Bundle();
+                extras.putString("storeId", store.getId());
+                extras.putString("storeName", store.getStoreName());
+                intent.putExtras(extras);
+                startActivity(intent);
                 break;
         }
     }

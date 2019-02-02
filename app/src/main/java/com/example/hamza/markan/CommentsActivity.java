@@ -12,6 +12,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -34,7 +35,7 @@ import java.util.ArrayList;
 
 public class CommentsActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private String storeId;
+    private String storeId, storeName;
     private FirebaseFirestore mFirestore;
     private ListView listViewComments;
     private static final String TAG = "TAG";
@@ -96,7 +97,12 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
         commentsList = new ArrayList<Comment>();
 
         Intent intent = getIntent();
-        storeId = intent.getExtras().getString("storeId");
+        Bundle extras = intent.getExtras();
+        storeId = extras.getString("storeId");
+        storeName = extras.getString("storeName");
+        setTitle(storeName + " Comments");
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         RefreshList();
     }
@@ -119,6 +125,7 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
                 Intent intent = new Intent(CommentsActivity.this, AddCommentActivity.class);
                 Bundle extras = new Bundle();
                 extras.putString("storeId", storeId);
+                extras.putString("storeName", storeName);
                 extras.putDouble("latitude", latitude);
                 extras.putDouble("longitude", longitude);
                 intent.putExtras(extras);

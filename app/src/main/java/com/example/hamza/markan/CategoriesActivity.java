@@ -2,6 +2,7 @@ package com.example.hamza.markan;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -10,6 +11,7 @@ import android.location.LocationManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -36,19 +38,35 @@ public class CategoriesActivity extends AppCompatActivity{
     Integer[] imagesID = {R.drawable.clothing, R.drawable.food, R.drawable.footwear, R.drawable.grocery, R.drawable.handbag};
     LocationManager locationManager;
     LocationListener locationListener;
-    Double latitude, longitude;
+//    Double latitude, longitude;
+    Location userLocation;
+    AlertDialog.Builder error;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("Categories");
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        error = new AlertDialog.Builder(this);
+        error.setMessage("Please turn on location services.");
+        error.setCancelable(true);
+        error.setPositiveButton(
+                "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
 
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                latitude = location.getLatitude();
-                longitude = location.getLongitude();
+                userLocation = location;
             }
 
             @Override
@@ -76,9 +94,6 @@ public class CategoriesActivity extends AppCompatActivity{
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60, 10, locationListener);
         }
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
         listView = (ListView) findViewById(R.id.listView);
         CategoriesListView categoriesListView = new CategoriesListView(this, categories, imagesID);
         listView.setAdapter(categoriesListView);
@@ -87,15 +102,21 @@ public class CategoriesActivity extends AppCompatActivity{
             @Override
             public void onItemClick(AdapterView<?> adapter, View v, int position, long arg3)
             {
-                String category = (String)adapter.getItemAtPosition(position);
-                Intent intent = new Intent(CategoriesActivity.this, StoresActivity.class);
-                Bundle extras = new Bundle();
-                extras.putString("category", category);
-                extras.putDouble("latitude", latitude);
-                extras.putDouble("longitude", longitude);
-                intent.putExtras(extras);
-                //intent.putExtra("category", category);
-                startActivity(intent);
+                if (userLocation != null){
+                    String category = (String)adapter.getItemAtPosition(position);
+                    Intent intent = new Intent(CategoriesActivity.this, StoresActivity.class);
+                    Bundle extras = new Bundle();
+                    extras.putString("category", category);
+                    extras.putDouble("latitude", userLocation.getLatitude());
+                    extras.putDouble("longitude", userLocation.getLongitude());
+                    intent.putExtras(extras);
+                    //intent.putExtra("category", category);
+                    startActivity(intent);
+                }
+                else{
+                    AlertDialog alert = error.create();
+                    alert.show();
+                }
             }
         });
     }

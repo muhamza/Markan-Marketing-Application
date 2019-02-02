@@ -6,12 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".CommentsActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:background="?attr/colorPrimary" />
+
     <ListView
         android:id="@+id/listViewComments"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="54dp" />
+        android:layout_marginBottom="54dp"
+        android:layout_marginTop="?android:attr/actionBarSize"/>
 
     <Button
         android:id="@+id/buttonAddComment"

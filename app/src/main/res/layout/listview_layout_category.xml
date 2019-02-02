@@ -25,5 +25,6 @@
         android:layout_marginTop="31dp"
         android:text="TextView"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textStyle="bold" />
 </RelativeLayout>
