@@ -29,6 +29,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginBottom="2dp"
+        android:theme="@style/Button"
         android:text="Add New Comment" />
 
     <ProgressBar

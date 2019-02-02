@@ -78,7 +78,7 @@
             android:padding="5dp"
             android:singleLine="false"
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
 
     </LinearLayout>
 

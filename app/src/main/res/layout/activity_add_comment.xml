@@ -72,7 +72,8 @@
             android:elevation="4dp"
             android:paddingLeft="70dp"
             android:paddingRight="70dp"
-            android:text="Submit" />
+            android:text="Submit"
+            android:theme="@style/Button"/>
     </LinearLayout>
 
     <ProgressBar

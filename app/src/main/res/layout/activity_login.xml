@@ -73,6 +73,7 @@
         android:layout_centerInParent="true"
         android:layout_centerVertical="true"
         android:layout_marginBottom="105dp"
+        android:theme="@style/Button"
         android:text="Login" />
 
     <TextView
