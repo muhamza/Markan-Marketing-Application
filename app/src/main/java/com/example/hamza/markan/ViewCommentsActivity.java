@@ -37,7 +37,7 @@ public class ViewCommentsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         comment = intent.getParcelableExtra("commentSend");
 
-        textViewDate.setText(comment.getDate());
+        textViewDate.setText("Posted on: " + comment.getDate());
         editTextTitle.setText(comment.getTitle());
         editTextComment.setText(comment.getComment());
         ratingBarComment.setRating((float)comment.getRating());

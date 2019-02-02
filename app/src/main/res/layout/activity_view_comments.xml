@@ -26,10 +26,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
             android:layout_marginBottom="30dp"
+            android:background="@android:drawable/editbox_background"
             android:enabled="false"
             android:inputType="textPersonName"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
@@ -38,17 +40,17 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:text="Date"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-            android:textStyle="bold" />
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Rating"
             android:layout_marginBottom="20dp"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-            android:textStyle="bold" />
+            android:text="Rating"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="18sp" />
 
         <RatingBar
             android:id="@+id/ratingBarComment"
@@ -67,6 +69,7 @@
             android:layout_height="200dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="30dp"
+            android:background="@android:drawable/editbox_background"
             android:breakStrategy="balanced"
             android:enabled="false"
             android:fitsSystemWindows="true"
@@ -74,7 +77,8 @@
             android:inputType="textMultiLine"
             android:padding="5dp"
             android:singleLine="false"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
