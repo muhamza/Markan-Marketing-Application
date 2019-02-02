@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menuLogout"
+        android:title="Logout" />
+    <item
+        android:id="@+id/menuOneKm"
+        android:title="1 kilometer" />
+    <item
+        android:id="@+id/menuFiveKm"
+        android:title="5 kilometer" />
+    <item
+        android:id="@+id/menuTenKm"
+        android:title="10 kilometer" />
+
+    <item
+        android:id="@+id/menuHome"
+        android:title="Home"
+        android:icon="@drawable/home_icon"
+        app:showAsAction="ifRoom"></item>
+
+    <item
+        android:id="@+id/menuRefresh"
+        android:title="Refresh"
+        android:icon="@drawable/refresh_icon"
+        app:showAsAction="ifRoom"></item>
+
+</menu>

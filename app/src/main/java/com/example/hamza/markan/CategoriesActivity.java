@@ -102,6 +102,7 @@ public class CategoriesActivity extends AppCompatActivity{
                     extras.putString("category", category);
                     extras.putDouble("latitude", userLocation.getLatitude());
                     extras.putDouble("longitude", userLocation.getLongitude());
+                    extras.putDouble("radius", 10);
                     intent.putExtras(extras);
                     //intent.putExtra("category", category);
                     startActivity(intent);

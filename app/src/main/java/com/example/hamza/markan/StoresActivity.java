@@ -33,7 +33,8 @@ public class StoresActivity extends AppCompatActivity {
     private ListView listViewStores;
     private static final String TAG = "TAG";
     private ProgressBar progressBar;
-    private float radius = 10;
+    private String category;
+    private float radius;
     private Location userLocation;
     private Location storeLocation;
     private GeoPoint storeLocationGeo;
@@ -60,9 +61,10 @@ public class StoresActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        String category = extras.getString("category");
+        category = extras.getString("category");
         double latitude = extras.getDouble("latitude");
         double longitude = extras.getDouble("longitude");
+        radius = (float)extras.getDouble("radius");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -120,24 +122,50 @@ public class StoresActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
+        inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        Bundle extras;
+
         switch (item.getItemId()){
             case R.id.menuLogout:
                 FirebaseAuth.getInstance().signOut();
                 finish();
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
+            case R.id.menuOneKm:
+                RefreshActivity(1);
+                break;
+            case R.id.menuFiveKm:
+                RefreshActivity(5);
+                break;
+            case R.id.menuTenKm:
+                RefreshActivity(10);
+                break;
+            case R.id.menuRefresh:
+                RefreshActivity(5);
+                break;
             case R.id.menuHome:
-                Intent intent = new Intent(this, CategoriesActivity.class);
+                intent = new Intent(this, CategoriesActivity.class);
                 startActivity(intent);
                 break;
         }
         return true;
+    }
+
+    private void RefreshActivity(float radius){
+        Intent intent = new Intent(this, StoresActivity.class);
+        Bundle extras = new Bundle();
+        extras.putString("category", category);
+        extras.putDouble("latitude", userLocation.getLatitude());
+        extras.putDouble("longitude", userLocation.getLongitude());
+        extras.putDouble("radius", radius);
+        intent.putExtras(extras);
+        startActivity(intent);
     }
 
 }
