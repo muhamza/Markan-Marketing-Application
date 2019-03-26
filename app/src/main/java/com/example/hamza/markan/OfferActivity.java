@@ -31,6 +31,7 @@ public class OfferActivity extends AppCompatActivity implements View.OnClickList
         imageViewLogo = findViewById(R.id.imageViewLogo);
 
         findViewById(R.id.buttonComments).setOnClickListener(this);
+        findViewById(R.id.buttonViewMap).setOnClickListener(this);
 
         Intent intent = getIntent();
         store = intent.getParcelableExtra("storeSend");
@@ -53,6 +54,11 @@ public class OfferActivity extends AppCompatActivity implements View.OnClickList
                 extras.putString("storeName", store.getStoreName());
                 intent.putExtras(extras);
                 startActivity(intent);
+                break;
+            case (R.id.buttonViewMap):
+                Intent i = new Intent(OfferActivity.this, MapsActivity.class);
+                i.putExtra("storeSend", store);
+                startActivity(i);
                 break;
         }
     }
