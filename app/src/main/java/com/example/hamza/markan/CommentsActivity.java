@@ -47,47 +47,47 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
 
     private ArrayList<Comment> commentsList;
 
-    LocationManager locationManager;
-    LocationListener locationListener;
-    double latitude, longitude;
+//    LocationManager locationManager;
+//    LocationListener locationListener;
+//    double latitude, longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comments);
 
-        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        locationListener = new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
-                latitude = location.getLatitude();
-                longitude = location.getLongitude();
-            }
-
-            @Override
-            public void onStatusChanged(String s, int i, Bundle bundle) {
-
-            }
-
-            @Override
-            public void onProviderEnabled(String s) {
-
-            }
-
-            @Override
-            public void onProviderDisabled(String s) {
-
-            }
-        };
-
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-            //ask for permission
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-        }
-        else{
-            //we have permissions
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60, 10, locationListener);
-        }
+//        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+//        locationListener = new LocationListener() {
+//            @Override
+//            public void onLocationChanged(Location location) {
+//                latitude = location.getLatitude();
+//                longitude = location.getLongitude();
+//            }
+//
+//            @Override
+//            public void onStatusChanged(String s, int i, Bundle bundle) {
+//
+//            }
+//
+//            @Override
+//            public void onProviderEnabled(String s) {
+//
+//            }
+//
+//            @Override
+//            public void onProviderDisabled(String s) {
+//
+//            }
+//        };
+//
+//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+//            //ask for permission
+//            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+//        }
+//        else{
+//            //we have permissions
+//            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60, 10, locationListener);
+//        }
 
         mFirestore = FirebaseFirestore.getInstance();
 
@@ -111,16 +111,16 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
         RefreshList();
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60, 10, locationListener);
-            }
-        }
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//
+//        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+//                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60, 10, locationListener);
+//            }
+//        }
+//    }
 
     @Override
     public void onClick(View view) {
@@ -130,8 +130,8 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
                 Bundle extras = new Bundle();
                 extras.putString("storeId", storeId);
                 extras.putString("storeName", storeName);
-                extras.putDouble("latitude", latitude);
-                extras.putDouble("longitude", longitude);
+//                extras.putDouble("latitude", latitude);
+//                extras.putDouble("longitude", longitude);
                 intent.putExtras(extras);
                 startActivity(intent);
                 break;

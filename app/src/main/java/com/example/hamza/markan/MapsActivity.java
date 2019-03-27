@@ -31,9 +31,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GeoPoint coordinates;
     LocationManager locationManager;
     LocationListener locationListener;
-    Location userLocation;
-    AlertDialog.Builder error;
-
+    private float zoomLevel = 11.5f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +74,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 LatLng userLoc = new LatLng(location.getLatitude(), location.getLongitude());
                 mMap.addMarker(new MarkerOptions().position(userLoc).title("Your Location").icon(BitmapDescriptorFactory.fromResource(R.drawable.locpin)));
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(userLoc));
-                mMap.animateCamera( CameraUpdateFactory.zoomTo( 11.5f ) );
+                mMap.animateCamera( CameraUpdateFactory.zoomTo( zoomLevel ) );
             }
 
             @Override
@@ -109,6 +107,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.addMarker(new MarkerOptions().position(storeLoc).title(store.getStoreName()).icon(BitmapDescriptorFactory.fromResource(R.drawable.mappin)));
             mMap.addMarker(new MarkerOptions().position(userLocation).title("Your Location").icon(BitmapDescriptorFactory.fromResource(R.drawable.locpin)));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(userLocation));
+            mMap.animateCamera( CameraUpdateFactory.zoomTo( zoomLevel ) );
         }
     }
 }

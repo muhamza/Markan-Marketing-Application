@@ -39,18 +39,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
-            android:text="Date"
+            android:text="Date:"
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="Rating"
+            android:text="Rating:"
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <RatingBar
             android:id="@+id/ratingBarComment"
@@ -77,8 +79,9 @@
             android:inputType="textMultiLine"
             android:padding="5dp"
             android:singleLine="false"
+            android:textAlignment="center"
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            android:textSize="18sp" />
+            android:textSize="15sp" />
 
     </LinearLayout>
 

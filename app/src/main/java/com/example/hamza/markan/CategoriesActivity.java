@@ -28,7 +28,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class CategoriesActivity extends AppCompatActivity{
     ListView listView;
     String[] categories = {"Clothing", "Food", "Footwear", "Grocery", "Handbags"};
-    Integer[] imagesID = {R.drawable.clothing, R.drawable.food, R.drawable.footwear, R.drawable.grocery, R.drawable.handbag};
+    Integer[] imagesID = {R.drawable.clothingb, R.drawable.foodb, R.drawable.footwearb, R.drawable.groceryb, R.drawable.handbagsb};
     LocationManager locationManager;
     LocationListener locationListener;
 //    Double latitude, longitude;

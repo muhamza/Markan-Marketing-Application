@@ -35,9 +35,10 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rating"
+            android:text="Rating:"
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <RatingBar
             android:id="@+id/ratingBarComment"
@@ -55,14 +56,16 @@
             android:layout_height="200dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="30dp"
+            android:background="@android:drawable/editbox_background"
             android:breakStrategy="balanced"
             android:fitsSystemWindows="true"
             android:gravity="top"
             android:hint="Your Message"
             android:inputType="textMultiLine"
-            android:background="@android:drawable/editbox_background"
             android:padding="5dp"
-            android:singleLine="false" />
+            android:singleLine="false"
+            android:textAlignment="center"
+            android:textSize="15sp" />
 
         <Button
             android:id="@+id/buttonAddComment"
