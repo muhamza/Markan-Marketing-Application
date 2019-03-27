@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
 
 
@@ -85,6 +86,7 @@ public class CategoriesActivity extends AppCompatActivity{
         else{
             //we have permissions
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60, 10, locationListener);
+            userLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         }
 
         listView = (ListView) findViewById(R.id.listView);
@@ -110,6 +112,7 @@ public class CategoriesActivity extends AppCompatActivity{
                 else{
                     AlertDialog alert = error.create();
                     alert.show();
+
                 }
             }
         });
