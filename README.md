@@ -6,4 +6,7 @@ To run the project follow the steps:
 3. Open the google_maps_api.xml file. (The path to the file is: /app/src/debug/res/values/google_maps_api.xml)  
 4. Copy the Google maps key in the following string.  
 &lt;string name="google_maps_key" templateMergeStrategy="preserve" translatable="false"&gt;**Google Maps Key**&lt;/string&gt;
-For more help visit this site: https://developers.google.com/maps/documentation/android-sdk/signup
+For more help visit this site: https://developers.google.com/maps/documentation/android-sdk/signup    
+5. Install the app on your Android phone or run it on an emulator with a minimum SDK API Level of 26.  
+6. Switch on the location services of your mobile phone.  
+7. Signup, and enjoy the application.  
